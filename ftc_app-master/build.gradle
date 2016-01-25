@@ -1,11 +1,42 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+
 buildscript {
+	ext {
+		androidHomePath = "$System.env.ANDROID_HOME"
+		boolean haveAndroidHomePath = androidHomePath?.trim()
+
+		if ( rootProject.hasProperty("buildAndroid") ) {
+			// The caller passed -PbuildAndroid=<bool> on the commandline
+			// (or used gradle.properties).  This will give the 'buildAndroid'
+			// property a string type, which can run us into trouble, because
+			// in Groovy, "false" != false.  We must coerce the variable into
+			// being a boolean so that we get the boolean behavior we expect.
+			buildAndroid = buildAndroid.toBoolean()
+		}
+		else {
+			// Default the 'buildAndroid' parameter to true.
+			buildAndroid = true
+		}
+
+		if ( !haveAndroidHomePath ) {
+			println "NOTE: Environment variable ANDROID_HOME is empty."
+			println "NOTE: The script will avoid building any android targets."
+			println "NOTE: Android builds can also be prevented by passing -PbuildAndroid=false"
+			buildAndroid = false
+		}
+		//else {
+		//	println "NOTE: Found ANDROID_HOME path: $androidHomePath"
+		//	println "NOTE: Android builds can be prevented by passing -PbuildAndroid=false"
+		//}
+	}
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+		if ( rootProject.buildAndroid ) {
+			classpath 'com.android.tools.build:gradle:1.2.3'
+		}
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

@@ -1,4 +1,4 @@
-package org.usfirst.ftc.exampleteam.yourcodehere;
+package org.usfirst.ftc.exampleteam.yourcodehere.android;
 
 import android.content.Context;
 import android.media.MediaPlayer;

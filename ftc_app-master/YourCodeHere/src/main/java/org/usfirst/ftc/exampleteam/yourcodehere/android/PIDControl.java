@@ -1,4 +1,4 @@
-package org.usfirst.ftc.exampleteam.yourcodehere;
+package org.usfirst.ftc.exampleteam.yourcodehere.android;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 

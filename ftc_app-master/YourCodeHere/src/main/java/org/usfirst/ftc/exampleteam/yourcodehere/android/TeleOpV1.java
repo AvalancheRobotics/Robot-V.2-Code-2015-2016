@@ -1,9 +1,11 @@
-package org.usfirst.ftc.exampleteam.yourcodehere;
+package org.usfirst.ftc.exampleteam.yourcodehere.android;
 
 import com.qualcomm.robotcore.hardware.*;
 
 import org.swerverobotics.library.*;
 import org.swerverobotics.library.interfaces.*;
+
+import org.usfirst.ftc.exampleteam.yourcodehere.*;
 
 /**
  * Version 1.0 of Team Avalanche 6253's TeleOp program for Robot version 2.0.
@@ -114,8 +116,9 @@ public class TeleOpV1 extends SynchronousOpMode {
     //ColorSensor colorRight;
 
 
-    @Override
-    public void main() throws InterruptedException {
+    //@Override
+    //public void main() throws InterruptedException {
+    public void foobarbaz() throws InterruptedException {
         hardwareMapping();
 
         waitForStart();
